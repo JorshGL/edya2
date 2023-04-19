@@ -6,7 +6,7 @@ import Chat from "../screens/Chat";
 import Profile from "../screens/Profile";
 import { useSelector } from "react-redux";
 import Login from "../screens/Login";
-import CommentsBox from "../screens/Home/components/CommentsBox";
+import Comments from "../screens/Comments";
 
 const Router = () => {
   const { user } = useSelector((state) => state.auth);
@@ -20,7 +20,9 @@ const Router = () => {
             <Route path="/chat/:userId" element={<Chat />} />
           </Route>
           <Route path="/profile/:userId" element={<Profile />} />
-          <Route path="/post/:postId/comments" element={<CommentsBox />} />
+          <Route path="/post">
+            <Route path="/post/:postId/comments" element={<Comments />} />
+          </Route>
         </Routes>
       ) : (
         <Routes>

@@ -33,7 +33,7 @@ const Post = ({ post }) => {
   const date = moment(user.registered.date); // later will be replace with post date
   return (
     <div className="flex flex-col w-full items-center mb-6">
-      <div className="flex px-3 gap-3 items-center p-3 self-start">
+      <div className="flex px-3 gap-3 items-center p-3 self-start" onClick={() => navigate(`/profile/${user.id}`)}>
         <div className="flex items-center max-h-full aspect-square justify-center rounded-full overflow-hidden p-[1px] bg-gradient-to-tr from-custom-yellow-main via-custom-red-main to-custom-purple-main">
           <img
             className="rounded-full"
@@ -60,7 +60,7 @@ const Post = ({ post }) => {
           <span className="text-4xl cursor-pointer" onClick={toggleLike}>
             {liked ? <MdOutlineFavorite fill="red" /> : <MdFavoriteBorder />}
           </span>
-          <FaRegComment />
+          <FaRegComment onClick={() => navigate(`/post/${post.id}/comments`)} />
           <BsSend />
           <BiBookmark className="ml-auto text-4xl" />
         </div>
@@ -89,16 +89,13 @@ const Post = ({ post }) => {
           </span>
           <span className="font-light">{post.title}</span>
         </div>
-
-        <div
-          className="px-3 text-xs font-thin cursor-pointer"
-          onClick={() => navigate(`/post/${post.id}/comments`)}
-        >
-          Ver todos los comentarios
-        </div>
       </div>
     </div>
   );
+};
+
+Post.defaultProps = {
+  viewAllCommentsEnabled: true,
 };
 
 export default Post;

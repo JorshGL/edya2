@@ -20,7 +20,7 @@ const Profile = () => {
     );
 
     const { data: images } = await axios.get(
-      "https://picsum.photos/v2/list?limit=11&random=2"
+      "https://picsum.photos/v2/list?limit=11&random=15"
     );
 
     const { data: likes } = await axios.get(
@@ -42,7 +42,6 @@ const Profile = () => {
     }));
 
     setUser({ ...data.results[0], posts: postList })
-    console.log(user)
   };
 
   useEffect(() => {
