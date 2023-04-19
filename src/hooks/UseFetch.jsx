@@ -4,7 +4,7 @@ import { useState } from "react";
 const useFetch = (url, body, method) => {
   const [state, setState] = useState({
     data: null,
-    isLoading: true,
+    isLoading: null,
     error: null
   });
 

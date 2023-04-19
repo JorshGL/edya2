@@ -1,26 +1,22 @@
 import React, { useState, useEffect } from "react";
-import useFetch from "./../../../hooks/UseFetch";
+import { useDispatch, useSelector } from "react-redux";
+import { getPosts } from "../../../store/slices/posts/thunks";
+import Post from "./Post";
 
 const PostList = () => {
-  const [posts, setPosts] = useState([]);
-
-  const response = useFetch("https://jsonplaceholder.typicode.com/posts");
+  const dispatch = useDispatch();
+  const { posts, loading } = useSelector((state) => state.posts);
 
   useEffect(() => {
-    console.log(response.isLoading)
-    if (response.data) setPosts(response.data);
-  }, [response.data]);
+    dispatch(getPosts());
+  }, []);
 
   return (
-    <div>
-      {response.isLoading ? (
+    <div className="flex flex-col items-center overflow-hidden bg-black">
+      {loading ? (
         <div>Loading...</div>
       ) : (
-        <div className="text-white">
-          {posts.map((post, index) => (
-            <div key={index}>{post.title}</div>
-          ))}
-        </div>
+        posts.map((post, index) => <Post key={index} post={post} />)
       )}
     </div>
   );

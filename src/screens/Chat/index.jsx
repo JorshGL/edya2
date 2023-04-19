@@ -1,23 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import TopBar from './../../components/TopBar'
 
-const Chat = (props) => {
-  const {
-    user
-  } = props;
+const Chat = ({userId}) => {
+
+  const [user, setUser] = useState({
+    name: 'Test',
+    status: 'online'
+  })
 
   return (
-    <div className='bg-black h-screen'>
+    <div className='h-screen'>
       <TopBar backButtonEnabled={true} user={user}/>
     </div>
   )
 }
 
 Chat.defaultProps = {
-  user: {
-    name: 'Test user',
-    status: 'online'
-  }
+  userId: 10
 }
 
 

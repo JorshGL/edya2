@@ -1,14 +1,16 @@
-import React, { Suspense, lazy } from "react";
+import React from "react";
 import TopBar from "./../../components/TopBar";
-const PostList = lazy(() => import("./components/PostList"));
+import MiniProfile from "./components/MiniProfile";
+import PostList from "./components/PostList";
+import ToolBar from "../../components/ToolBar";
 
 const Home = () => {
   return (
-    <div className="bg-black h-screen">
+    <div className="h-screen">
       <TopBar />
-      <Suspense fallback={<div>Fallback</div>}>
-        <PostList />
-      </Suspense>
+      <MiniProfile />
+      <PostList />
+      <ToolBar />
     </div>
   );
 };

@@ -1,10 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { 
-  MdKeyboardBackspace,
-  MdOutlineSearch,
-  MdChatBubbleOutline
+  MdOutlineArrowBackIosNew
 } from 'react-icons/md'
+
+import {
+  BsSearch,
+  BsSend
+} from 'react-icons/bs'
+
 import { useNavigate } from 'react-router-dom'
 
 
@@ -21,15 +25,15 @@ const TopBar = (props) => {
   const navigate = useNavigate();
 
   return (
-    <div className='flex items-center p-4 h-20 text-white gap-5 justify-start w-full md:px-10 md:py-10'>
+    <div className='flex items-center h-20 text-white gap-5 justify-start w-full px-10 py-10'>
       {backButtonEnabled && (
-        <MdKeyboardBackspace
+        <MdOutlineArrowBackIosNew
           onClick={() => navigate(-1)}
-          className='text-5xl hover:cursor-pointer'
+          className='text-2xl hover:cursor-pointer'
         />
       )}
       {username && (
-        <div className="text-3xl font-medium">{ username }</div>
+        <div className="text-2xl font-medium w-full text-center">{ username }</div>
       ) ||
       user && (
         <div className='flex flex-col items-start'>
@@ -47,12 +51,12 @@ const TopBar = (props) => {
       )}
       
       {(searchButtonEnabled && chatButtonEnabled) && (
-        <div className="text-white text-3xl flex gap-3 md:text-5xl md:gap-6 ml-auto">
-          <MdOutlineSearch
+        <div className="text-white flex gap-6 text-2xl ml-auto">
+          <BsSearch
             className='hover:cursor-pointer'
             // onClick={() => navigate('')}
           />
-          <MdChatBubbleOutline
+          <BsSend
             className='hover:cursor-pointer'
             onClick={() => navigate('/chat')}
           />
