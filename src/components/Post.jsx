@@ -33,7 +33,7 @@ const Post = ({ post }) => {
   const date = moment(user.registered.date); // later will be replace with post date
   return (
     <div className="flex flex-col w-full items-center mb-6">
-      <div className="flex px-3 gap-3 items-center p-3 self-start cursor-pointer" onClick={() => navigate(`/profile/${user.id}`)}>
+      <div className="flex px-3 gap-3 items-center p-3 self-start cursor-pointer" onClick={() => navigate(`/profile/${user.id.value}`)}>
         <div className="flex items-center max-h-full aspect-square justify-center rounded-full overflow-hidden p-[1px] bg-gradient-to-tr from-custom-yellow-main via-custom-red-main to-custom-purple-main">
           <img
             className="rounded-full"
