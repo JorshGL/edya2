@@ -37,12 +37,12 @@ const TopBar = (props) => {
       user && (
         <div className='flex flex-col items-start'>
           <div className="text-2xl">{ user.name }</div>
-          <div className="font-light text-xs flex items-center gap-2">
+          {/* <div className="font-light text-xs flex items-center gap-2">
             {user.status === 'online' ? (
               <figure className="h-3 w-3 rounded-full bg-green-500"></figure>
             ) : <figure className="h-3 w-3 rounded-full bg-gray-500"></figure> }
             { user.status }
-          </div>
+          </div> */}
         </div>
       ) ||
       title && (
