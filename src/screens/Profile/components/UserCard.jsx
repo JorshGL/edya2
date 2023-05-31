@@ -4,10 +4,10 @@ const UserCard = ({ user }) => {
   return (
     <div className="flex flex-col">
       <div className="flex h-1/6 w-full items-center px-5 py-2 gap-3 justify-around">
-        <div className="flex flex-col items-center max-h-full aspect-square justify-center rounded-full overflow-hidden p-[2px] bg-gradient-to-tr from-custom-yellow-main via-custom-red-main to-custom-purple-main mr-auto">
+        <div className="flex max-h-32 flex-col items-center aspect-square justify-center rounded-full overflow-hidden p-[2px] bg-gradient-to-tr from-custom-yellow-main via-custom-red-main to-custom-purple-main mr-auto">
           <img
-            className="rounded-full overflow-hidden"
-            src={user?.picture.large}
+            className="rounded-full object-scale-down"
+            src={user?.picture}
             alt=""
           />
         </div>
@@ -28,12 +28,10 @@ const UserCard = ({ user }) => {
       </div>
 
       <div className="px-5 mt-2 font-semibold">
-        {user?.name?.first} {user?.name?.last}
+        {user?.name}
       </div>
       <div className="px-5 font-light text-xs">
-        {/* short lorem ipsum */}
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-        tincidunt, nisl vitae ultricies lacinia, nisl nisl aliquet nisl, nec
+        {user?.bio}
       </div>
 
       <div className="flex w-full justify-center gap-5 py-10">

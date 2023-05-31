@@ -2,31 +2,32 @@ import React, { useEffect, useState } from "react";
 import { RiFacebookBoxFill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../store/slices/auth/thunks";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.auth);
-  
-  const [username, setUsername] = useState("");
+  const navigate = useNavigate();
+
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [logInButtonDisabled, setLoginButtonDisabled] = useState(false);
 
-
   useEffect(() => {
-    setLoginButtonDisabled(!username || !password);
-  }, [username, password]);
+    setLoginButtonDisabled(!email || !password);
+  }, [email, password]);
 
   return (
     <div className="flex flex-col items-center h-screen justify-center gap-4 bg-black">
       <div className="text-7xl font-['Grand_Hotel'] mb-12">Instagramn't</div>
       <input
         type="text"
-        placeholder="Usuario"
-        onChange={(e) => setUsername(e.target.value)}
+        placeholder="Email"
+        onChange={(e) => setEmail(e.target.value)}
         className="p-4 rounded-lg bg-custom-gray-main border-[0.5px] border-custom-gray-soft w-11/12 focus:outline-none"
       />
       <input
-        type="text"
+        type="password"
         placeholder="Contraseña"
         onChange={(e) => setPassword(e.target.value)}
         className="p-4 rounded-lg bg-custom-gray-main border-[0.5px] border-custom-gray-soft w-11/12 focus:outline-none"
@@ -40,7 +41,7 @@ const Login = () => {
         <button
           disabled={logInButtonDisabled}
           className="p-4 bg-custom-blue-main rounded-lg font-medium disabled:opacity-40 ease-in-out duration-300"
-          onClick={() => dispatch(login())}
+          onClick={() => {dispatch(login({ email, password })), navigate("/");}}
         >
           {loading ? (
             <div className="flex w-full justify-center">
@@ -79,7 +80,13 @@ const Login = () => {
 
         <div className="w-full text-center font-light">
           ¿No tienes una cuenta?
-          <span className="text-custom-blue-main font-medium"> Regístrate.</span>
+          <span
+            onClick={() => navigate("/register")}
+            className="text-custom-blue-main font-medium cursor-pointer"
+          >
+            {" "}
+            Regístrate.
+          </span>
         </div>
       </div>
     </div>

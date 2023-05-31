@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { 
   MdOutlineArrowBackIosNew
 } from 'react-icons/md'
-
 import {
   BsSearch,
   BsSend

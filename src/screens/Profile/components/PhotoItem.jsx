@@ -5,8 +5,8 @@ const PhotoItem = ({ post }) => {
   const navigate = useNavigate();
 
   return (
-    <div className='overflow-hidden' onClick={() => navigate(`/post/${post.id}/comments`)}>
-      <img className='aspect-square object-cover' src={post.image} alt="" />
+    <div className='overflow-hidden cursor-pointer' onClick={() => navigate(`/post/${post._id}`)}>
+      <img className='aspect-square object-cover' src={post.photo} alt="" />
     </div>
   )
 }

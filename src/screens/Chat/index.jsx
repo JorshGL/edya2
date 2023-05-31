@@ -1,7 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import TopBar from './../../components/TopBar'
 
-const Chat = ({userId}) => {
+const Chat = () => {
+  const { userId } = useParams()
+
+  useEffect(() => {
+    
+  }, [userId])
 
   const [user, setUser] = useState({
     name: 'Test',

@@ -12,7 +12,7 @@ const PostList = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center overflow-hidden bg-black">
+    <div className="flex flex-col items-center overflow-hidden bg-black pb-20">
       {loading ? (
         <div>Loading...</div>
       ) : (
